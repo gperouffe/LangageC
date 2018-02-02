@@ -1,1 +1,4 @@
 *.o
+makefile
+matproj.exe
+matproj
