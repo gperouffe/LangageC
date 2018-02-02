@@ -16,6 +16,7 @@ void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int col2 = pMat1->NbCol;
     if(lig1 != lig2 && col1 != col2){
         errMsg(DIFF_DIM);
+        pMat3=NULL;
     }
     else{
         matAllouer(pMat3, lig1, col1);
@@ -40,6 +41,7 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int col2 = pMat1->NbCol;
     if(lig1 != lig2 || col1 != col2){
         errMsg(DIFF_DIM);
+        pMat3=NULL;
     }
     else{
         matAllouer(pMat3, lig1, col1);
@@ -64,18 +66,12 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int col2 = pMat1->NbCol;
     if(col1 != lig2){
         errMsg(COL_DIFF_LIG);
+        pMat3=NULL;
     }
     else{
         matAllouer(pMat3, lig1, col2);
         pMat3->Type = pleine;
-        for(int i = 0; i < lig1; ++i)
-        for(int j = 0; j < col2; ++j){
-            double elt = 0;
-            for(int k = 0; k < col1; ++k){
-                elt += matAccElt(pMat1, i, k) * matAccElt(pMat2, k, j);
-            }
-            matModifElt(pMat3, i, j, elt);
-        }
+        opMul(pMat1,pMat2,pMat3);
     }
 }
 
@@ -90,18 +86,13 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int col1 = pMat1->NbCol;
     int lig2 = pMat1->NbLig;
     int col2 = pMat1->NbCol;
-    if(col1 != lig2){
-        errMsg(COL_DIFF_LIG);
-    }
-    else{
-        for(int i = 0; i < lig1; ++i)
-        for(int j = 0; j < col2; ++j){
-            double elt = 0;
-            for(int k = 0; k < col1; ++k){
-                elt += matAccElt(pMat1, i, k) * matAccElt(pMat2, k, j);
-            }
-            matModifElt(pMat3, i, j, elt);
+    for(int i = 0; i < lig1; ++i)
+    for(int j = 0; j < col2; ++j){
+        double elt = 0;
+        for(int k = 0; k < col1; ++k){
+            elt += matAccElt(pMat1, i, k) * matAccElt(pMat2, k, j);
         }
+        matModifElt(pMat3, i, j, elt);
     }
 }
 
@@ -131,6 +122,7 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
     int col = pMat1->NbCol;
     if(lig != col){
         errMsg(NOT_SQUARE);
+        pMat2=NULL;
     }
     else{
         matCopy(pMat1, pMat2);

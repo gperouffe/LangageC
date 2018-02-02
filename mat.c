@@ -58,11 +58,10 @@ void matModifElt(T_Mat *pMat, int Lig, int Col,double Val){
  * Description : Libere la memoire stockee par la T_Mat
  */
 void matLiberer(T_Mat *pMat){
-  free(pMat->Type);
-  free(pMat->NbCol);
-  free(pMat->NbLig);
-  free(pMat->Elts);
-  free(pMat);
+  if(pMat!=NULL){
+    free(pMat->Elts);
+    free(pMat);
+  }
 }
 
 
