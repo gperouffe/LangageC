@@ -10,7 +10,7 @@ int main(){
   printf("Operations Matricielles v1.01\n");
   printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
 
-  T_Mat *mat1, *mat2, *mat3;
+  T_Mat mat1, mat2, mat3;
   int x = 0, exposant;
 
   while(x=menu()){
@@ -22,20 +22,20 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
 
-        esSaisir(mat1);
+        esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
-        esSaisir(mat2);
+        esSaisir(&mat2);
 
-        opAddAlloc(mat1,mat2,mat3);
+        opAddAlloc(&mat1, &mat2, &mat3);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
-        esAfficher(mat3);
+        esAfficher(&mat3);
 
-        matLiberer(mat1);
-        matLiberer(mat2);
-        matLiberer(mat3);
+        matLiberer(&mat1);
+        matLiberer(&mat2);
+        matLiberer(&mat3);
         break;
 
 
@@ -44,20 +44,20 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
 
-        esSaisir(mat1);
+        esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
-        esSaisir(mat2);
+        esSaisir(&mat2);
 
-        opSubAlloc(mat1,mat2,mat3);
+        opSubAlloc(&mat1, &mat2, &mat3);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
-        esAfficher(mat3);
+        esAfficher(&mat3);
 
-        matLiberer(mat1);
-        matLiberer(mat2);
-        matLiberer(mat3);
+        matLiberer(&mat1);
+        matLiberer(&mat2);
+        matLiberer(&mat3);
         break;
 
 
@@ -66,20 +66,20 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
 
-        esSaisir(mat1);
+        esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
-        esSaisir(mat2);
+        esSaisir(&mat2);
 
-        opMulAlloc(mat1,mat2,mat3);
+        opMulAlloc(&mat1, &mat2, &mat3);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
-        esAfficher(mat3);
+        esAfficher(&mat3);
 
-        matLiberer(mat1);
-        matLiberer(mat2);
-        matLiberer(mat3);
+        matLiberer(&mat1);
+        matLiberer(&mat2);
+        matLiberer(&mat3);
         break;
 
 
@@ -88,19 +88,19 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
 
-        esSaisir(mat1);
+        esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
-        printf("Exposant voulu :\n");
-        scanf(" %d\n", &exposant);
+        printf("Exposant voulu: ");
+        scanf("%d", &exposant);
 
-        opPuis(mat1,puissance,mat2);
+        opPuis(&mat1, exposant, &mat2);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
-        esAfficher(mat2);
+        esAfficher(&mat2);
 
-        matLiberer(mat1);
-        matLiberer(mat2);
+        matLiberer(&mat1);
+        matLiberer(&mat2);
         break;
 
       default:break;

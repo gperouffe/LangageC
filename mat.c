@@ -8,12 +8,11 @@
  *   pour qu'elle puisse contenir une matrice ayant
  *   Nblig lignes et NbCol colones
  */
-void matAllouer(T_Mat **pMat, int NbLig, int NbCol){
-    *pMat = malloc(sizeof(T_Mat));
-    (*pMat)->Type = pleine;
-    (*pMat)->NbLig = NbLig;
-    (*pMat)->NbCol = NbCol;
-    (*pMat)->Elts = malloc(sizeof(double)*NbLig*NbCol);
+void matAllouer(T_Mat *pMat, int NbLig, int NbCol){
+    pMat->Type = pleine;
+    pMat->NbLig = NbLig;
+    pMat->NbCol = NbCol;
+    pMat->Elts = malloc(sizeof(double)*NbLig*NbCol);
 }
 
 /*
@@ -60,9 +59,8 @@ void matModifElt(T_Mat *pMat, int Lig, int Col,double Val){
  * Description : Libere la memoire stockee par la T_Mat
  */
 void matLiberer(T_Mat *pMat){
-  if(pMat!=NULL){
+  if(pMat->Elts!=NULL){
     free(pMat->Elts);
-    free(pMat);
   }
 }
 
@@ -101,7 +99,7 @@ void matInit(T_Mat *pMat, double Val){
  */
 void matCopy(T_Mat *pMat1, T_Mat *pMat2){
 
-  matAllouer(&pMat2,pMat1->NbLig,pMat1->NbCol);
+  matAllouer(pMat2,pMat1->NbLig,pMat1->NbCol);
   (pMat2->Type)=(pMat1->Type);
   (pMat2->NbCol)=(pMat1->NbCol);
   (pMat2->NbLig)=(pMat1->NbLig);
