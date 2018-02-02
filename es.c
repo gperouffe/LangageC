@@ -11,7 +11,7 @@
  */
 void esSaisir(T_Mat *pMat){
     int lig, col;
-    
+
     char validDim=0;
     while(!validDim){
         printf("Nombre de lignes: ");
@@ -87,6 +87,7 @@ void esSaisir(T_Mat *pMat){
             matModifElt(pMat, i, j, 0);
         }
     }
+    printf("%d\n",pMat->NbLig);
 }
 
 /*
@@ -94,6 +95,7 @@ void esSaisir(T_Mat *pMat){
  * Description : Affiche a l'ecran le contenu de la matrice reperee par pMAt
  */
 void esAfficher(T_Mat *pMat){
+    printf("%d\n",pMat->NbLig);
     for(int i = 0; i < pMat->NbLig; ++i){
         for(int j = 0; j < pMat->NbCol; ++j){
             printf("%lf", matAccElt(pMat, i, j));

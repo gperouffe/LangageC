@@ -21,12 +21,17 @@ int main(){
       case addition:
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
-
         esSaisir(mat1);
+        printf(" entre les deux : %d\n",mat1->NbLig);
+        esAfficher(mat1);
+
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
         esSaisir(mat2);
+        esAfficher(mat2);
+
+
 
         opAddAlloc(mat1,mat2,mat3);
         printf("\n--------------------------------\n");

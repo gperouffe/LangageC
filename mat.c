@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "mat.h"
 #include "es.h"
 
@@ -14,6 +15,8 @@ void matAllouer(T_Mat **pMat, int NbLig, int NbCol){
     (*pMat)->NbLig = NbLig;
     (*pMat)->NbCol = NbCol;
     (*pMat)->Elts = malloc(sizeof(double)*NbLig*NbCol);
+
+    printf("%d %d \n",(*pMat)->NbLig,(*pMat)->NbCol);
 }
 
 /*
@@ -41,6 +44,7 @@ int matNbCol(T_Mat *pMat){
  */
 double matAccElt(T_Mat *pMat,int Lig, int Col){
   int x = Lig*(pMat->NbCol)+Col;
+  printf("%d",x);
   return (pMat->Elts[x]);
 }
 
