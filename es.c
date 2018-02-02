@@ -81,7 +81,7 @@ void esSaisir(T_Mat *pMat){
             printf("Mat[%d][%d]=", i, j);
             scanf("%lf", &elt);
             matModifElt(pMat, i, j, elt);
-        }            
+        }
         else{
             matModifElt(pMat, i, j, 0);
         }
@@ -99,4 +99,29 @@ void esAfficher(T_Mat *pMat){
         }
         printf("\n");
     }
+}
+
+int menu(){
+
+  int entry;
+  printf("\nChoisissez une operation\n");
+  printf("\n\t1 - Addition\t\t\t2 - Soustraction");
+  printf("\n\t3 - Multiplication\t\t4 - Puissance");
+  printf("\n\t0 - Quitter");
+
+  printf("\n\n----->");
+  scanf("%d",&entry);
+
+  switch(entry){
+    case addition:
+    case soustraction:
+    case multiplication:
+    case puissance:
+    case quitter:
+            return entry;
+            break;
+    default:printf("Entree non reconnues, veuillez recommencer");
+            return -1;
+            break;
+  }
 }
