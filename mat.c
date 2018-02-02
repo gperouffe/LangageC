@@ -101,7 +101,7 @@ void matInit(T_Mat *pMat, double Val){
  */
 void matCopy(T_Mat *pMat1, T_Mat *pMat2){
 
-  matAllouer(pMat2,pMat1->NbLig,pMat1->NbCol);
+  matAllouer(&pMat2,pMat1->NbLig,pMat1->NbCol);
   (pMat2->Type)=(pMat1->Type);
   (pMat2->NbCol)=(pMat1->NbCol);
   (pMat2->NbLig)=(pMat1->NbLig);
