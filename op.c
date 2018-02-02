@@ -9,7 +9,7 @@
  *	memoire pour la matrice resultat
  */
 void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
-    
+
 }
 
 
@@ -39,11 +39,6 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
  *	memoire pour la matrice resultat
  */
 void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
-<<<<<<< HEAD
-=======
-
-}
->>>>>>> 85817cf0850a408e2462c59db958e01e987eb2f1
 
 }
 
