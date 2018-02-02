@@ -2,6 +2,7 @@
 #include "mat.h"
 #include "es.h"
 #include "err.h"
+#include <math.h>
 
 /*
  * fonction : opAddAlloc
@@ -24,7 +25,7 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
 
 
 /*
- * fonction : opMulAlloc
+ * fonction : opMulA"lloc
  * Description : multiplication de deux matrices AVEC allocation de
  *	memoire pour la matrice resultat
  */
@@ -68,7 +69,15 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
  */
 
  double opNorme_1(T_Mat *pMat){
+   double result = 0;
 
+   for(int i = 0; i < (pMat->NbLig);i++){
+     for(int j = 0; j < (pMat->NbCol);j++){
+       result+=fabs(matAccElt(pMat,i,j));
+     }
+   }
+
+   return result;
  }
 
 
@@ -78,7 +87,17 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
  */
 
 double opNorme_2(T_Mat *pMat){
+  double result = 0;
+  double temp = 0;
 
+  for(int i = 0; i < (pMat->NbLig);i++){
+    for(int j = 0; j < (pMat->NbCol);j++){
+      temp=(matAccElt(pMat,i,j));
+      result+=temp*temp;
+    }
+  }
+
+  return sqrt(result);
 }
 
 
@@ -88,5 +107,21 @@ double opNorme_2(T_Mat *pMat){
  * Description : callul de la norme INF
  */
 double opNorme_inf(T_Mat *pMat){
+
+  double result = 0;
+  double temp;
+
+  for(int i = 0; i < (pMat->NbLig);i++){
+    for(int j = 0; j < (pMat->NbCol);j++){
+
+      temp = fabs(matAccElt(pMat,i,j));
+      if(temp>result){
+        result = temp;
+
+      }
+    }
+  }
+
+  return result;
 
 }
