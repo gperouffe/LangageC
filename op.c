@@ -1,6 +1,7 @@
 #include "op.h"
 #include "mat.h"
 #include "err.h"
+#include "es.h"
 
 /*
  * fonction : opAddAlloc
