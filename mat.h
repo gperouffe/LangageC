@@ -12,7 +12,7 @@ typedef struct
  *   pour qu'elle puisse contenir une matrice ayant
  *   Nblig lignes et NbCol colones 
  */
-void matAllouer(T_Mat *pMat, int NbLig, int NbCol);
+void matAllouer(T_Mat **pMat, int NbLig, int NbCol);
 
 /*
  * fonction matNbLig

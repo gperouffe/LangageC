@@ -1,6 +1,7 @@
 #include "mat.h"
 #include "es.h"
 #include "err.h"
+#include <stdio.h>
 
 /*
  * fonction esSaisir
@@ -25,7 +26,7 @@ void esSaisir(T_Mat *pMat){
         }
     }
 
-    matAllouer(pMat, lig, col);
+    matAllouer(&pMat, lig, col);
 
     int type=0;
     char validType=0;
@@ -50,7 +51,7 @@ void esSaisir(T_Mat *pMat){
 
     double elt;
     for(int i = 0; i < pMat->NbLig; ++i)
-    for(int j = 0; i < pMat->NbCol; ++j){
+    for(int j = 0; j < pMat->NbCol; ++j){
         char askForElt = 0;
         switch(pMat->Type){
             case pleine:
@@ -94,7 +95,7 @@ void esSaisir(T_Mat *pMat){
  */
 void esAfficher(T_Mat *pMat){
     for(int i = 0; i < pMat->NbLig; ++i){
-        for(int j = 0; i < pMat->NbCol; ++j){
+        for(int j = 0; j < pMat->NbCol; ++j){
             printf("%lf", matAccElt(pMat, i, j));
         }
         printf("\n");
