@@ -9,6 +9,35 @@
  * avec les valeurs definies par l'utilisateur.
  */
 void esSaisir(T_Mat *pMat){
+    int lig, col;
+    printf("Nombre de lignes: ");
+    scanf("%d", &lig);
+    printf("Nombre de colonnes: ");
+    scanf("%d", &col);
+
+    matAllouer(pMat, lig, col);
+
+    int type=0;
+    char validType=0;
+    while(!validType){
+        printf("Type de la matrice (pleine = 1, diag = 2, tridiag = 3, triinf = 4, trisup = 5): ");
+        scanf("%d", &type);
+        if(type == 1){
+            validType = 1;
+        }
+        if(type >= 2 && type <= 5){
+            if(lig == col)
+                validType = 1;
+            else
+                errMsg(NOT_SQUARE);
+        }
+        if(type < 1 || type >5){
+            printf("Veuillez entrer un type valide.\n");
+        }
+    }
+    pMat->Type = type;
+
+
     double elt;
     for(int i = 0; i < pMat->NbLig; ++i)
     for(int j = 0; i < pMat->NbCol; ++j){
