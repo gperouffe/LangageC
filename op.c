@@ -8,7 +8,9 @@
  * Description : addition de deux matrices AVEC allocation de
  *	memoire pour la matrice resultat
  */
-void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
+void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
+    
+}
 
 
 /*
@@ -16,7 +18,9 @@ void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
  * Description : soustraction de deux matrices AVEC allocation de
  *	memoire pour la matrice resultat
  */
-void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
+void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
+
+}
 
 
 /*
@@ -24,7 +28,9 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
  * Description : multiplication de deux matrices AVEC allocation de
  *	memoire pour la matrice resultat
  */
-void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
+void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
+
+}
 
 
 /*
@@ -33,7 +39,8 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
  *	memoire pour la matrice resultat
  */
 void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
-      
+
+}
 
 
 /*
