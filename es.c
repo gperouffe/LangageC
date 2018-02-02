@@ -10,10 +10,20 @@
  */
 void esSaisir(T_Mat *pMat){
     int lig, col;
-    printf("Nombre de lignes: ");
-    scanf("%d", &lig);
-    printf("Nombre de colonnes: ");
-    scanf("%d", &col);
+    
+    char validDim=0;
+    while(!validDim){
+        printf("Nombre de lignes: ");
+        scanf("%d", &lig);
+        printf("Nombre de colonnes: ");
+        scanf("%d", &col);
+        if(lig <= 0 && col <= 0){
+            printf("Les dimensions sont invalides. \n");
+        }
+        else{
+            validDim = 1;
+        }
+    }
 
     matAllouer(pMat, lig, col);
 
