@@ -49,7 +49,7 @@ double matAccElt(T_Mat *pMat,int Lig, int Col){
  */
 void matModifElt(T_Mat *pMat, int Lig, int Col,double Val){
   int x = Lig*(pMat->NbCol)+Col;
-  pMat->Elts[x] = val;
+  pMat->Elts[x] = Val;
 }
 
 
@@ -74,8 +74,8 @@ void matUnite(T_Mat *pMat, int Dim){
   pMat->Type = 2;
   pMat->NbLig = Dim;
   pMat->NbCol = Dim;
-int i = 0;i<(pMat->NbLig)*(pMat->NbCol);i++
-  for(int i = 0; i<Dim,i++){
+  matInit(pMat, 0);
+  for(int i = 0; i<Dim;i++){
     int x = i*(pMat->NbCol)+i;
     pMat->Elts[x] = 1;
   }
