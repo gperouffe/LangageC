@@ -103,7 +103,6 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     }
 }
 
-
 /*
  * fonction : opMulScalAlloc
  * Description : multiplication d'une matrice par scalaire AVEC allocation de
@@ -123,7 +122,7 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2){
 
 /*
  * fonction : opPuis
- * Description : callul la puissance d'une  matrice 
+ * Description : callul la puissance d'une  matrice
  */
 void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
 
@@ -133,9 +132,9 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
 
 /*
  * fonction : opNorme_1
- * Description : callul de la norme 1 
+ * Description : callul de la norme 1
  */
- 
+
  double opNorme_1(T_Mat *pMat){
 
  }
@@ -143,7 +142,7 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
 
 /*
  * fonction : opNorme_2
- * Description : callul de la norme 2 
+ * Description : callul de la norme 2
  */
 
 double opNorme_2(T_Mat *pMat){
@@ -154,7 +153,7 @@ double opNorme_2(T_Mat *pMat){
 
 /*
  * fonction : opNorme INF
- * Description : callul de la norme INF 
+ * Description : callul de la norme INF
  */
 double opNorme_inf(T_Mat *pMat){
 
