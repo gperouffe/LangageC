@@ -63,7 +63,7 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig2 = pMat1->NbLig;
     int col2 = pMat1->NbCol;
     if(col1 != lig2){
-        errMsg(DIFF_DIM);
+        errMsg(COL_DIFF_LIG);
     }
     else{
         matAllouer(pMat3, lig1, col2);
@@ -91,7 +91,7 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig2 = pMat1->NbLig;
     int col2 = pMat1->NbCol;
     if(col1 != lig2){
-        errMsg(DIFF_DIM);
+        errMsg(COL_DIFF_LIG);
     }
     else{
         for(int i = 0; i < lig1; ++i)
@@ -127,7 +127,23 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2){
  * Description : callul la puissance d'une  matrice
  */
 void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
-
+    int lig = pMat1->NbLig;
+    int col = pMat1->NbCol;
+    if(lig != col){
+        errMsg(NOT_SQUARE);
+    }
+    else{
+        matCopy(pMat1, pMat2);
+        T_Mat* temp;
+        matAllouer(temp, lig, col);
+        for(int i = 1; i < Expo; ++i){
+            opMul(pMat2, pMat1, temp);
+            T_Mat* newTemp = pMat2;
+            pMat2 = temp;
+            temp = newTemp;
+        }
+        matLiberer(temp);
+    }
 }
 
 
@@ -136,7 +152,6 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
  * fonction : opNorme_1
  * Description : callul de la norme 1
  */
-
  double opNorme_1(T_Mat *pMat){
    double result = 0;
 
