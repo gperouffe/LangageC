@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "op.h"
 #include "mat.h"
+#include "op.h"
 #include "es.h"
 
 int main(){
@@ -10,8 +10,8 @@ int main(){
   printf("Operations Matricielles v1.01\n");
   printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
 
-  T_Mat* mat1,mat2, mat3;
-  int x = 0,puissance;
+  T_Mat *mat1, *mat2, *mat3;
+  int x = 0, exposant;
 
   while(x=menu()){
 
@@ -92,7 +92,7 @@ int main(){
 
         printf("\n--------------------------------\n");
         printf("Exposant voulu :\n");
-        scanf(" %d\n",&puissance);
+        scanf(" %d\n", &exposant);
 
         opPuis(mat1,puissance,mat2);
         printf("\n--------------------------------\n");

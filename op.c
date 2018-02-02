@@ -1,8 +1,10 @@
-#include "op.h"
 #include "mat.h"
+#include "op.h"
 #include "err.h"
 #include "es.h"
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
  * fonction : opAddAlloc
@@ -10,19 +12,24 @@
  *	memoire pour la matrice resultat
  */
 void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
+    printf("Add\n");
     int lig1 = pMat1->NbLig;
-    int lig2 = pMat1->NbLig;
+    int lig2 = pMat2->NbLig;
     int col1 = pMat1->NbCol;
-    int col2 = pMat1->NbCol;
+    int col2 = pMat2->NbCol;
+    printf("%d %d\n", lig1, col1);
+    printf("%d %d\n", lig2, col2);
     if(lig1 != lig2 && col1 != col2){
         errMsg(DIFF_DIM);
         pMat3=NULL;
     }
     else{
-        matAllouer(pMat3, lig1, col1);
+        printf("dim ok\n");
+        matAllouer(&pMat3, lig1, col1);
         pMat3->Type = pleine;
         for(int i = 0; i < lig1; ++i)
         for(int j = 0; j < col1; ++j){
+            printf("%d %d\n",i,j);
             matModifElt(pMat3, i, j, matAccElt(pMat1,i,j) + matAccElt(pMat2,i,j));
         }
     }
@@ -36,15 +43,15 @@ void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
  */
 void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig1 = pMat1->NbLig;
-    int lig2 = pMat1->NbLig;
+    int lig2 = pMat2->NbLig;
     int col1 = pMat1->NbCol;
-    int col2 = pMat1->NbCol;
+    int col2 = pMat2->NbCol;
     if(lig1 != lig2 || col1 != col2){
         errMsg(DIFF_DIM);
         pMat3=NULL;
     }
     else{
-        matAllouer(pMat3, lig1, col1);
+        matAllouer(&pMat3, lig1, col1);
         pMat3->Type = pleine;
         for(int i = 0; i < lig1; ++i)
         for(int j = 0; j < col1; ++j){
@@ -61,15 +68,15 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
  */
 void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig1 = pMat1->NbLig;
+    int lig2 = pMat2->NbLig;
     int col1 = pMat1->NbCol;
-    int lig2 = pMat1->NbLig;
-    int col2 = pMat1->NbCol;
+    int col2 = pMat2->NbCol;
     if(col1 != lig2){
         errMsg(COL_DIFF_LIG);
         pMat3=NULL;
     }
     else{
-        matAllouer(pMat3, lig1, col2);
+        matAllouer(&pMat3, lig1, col2);
         pMat3->Type = pleine;
         opMul(pMat1,pMat2,pMat3);
     }
@@ -83,9 +90,9 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
  */
 void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig1 = pMat1->NbLig;
+    int lig2 = pMat2->NbLig;
     int col1 = pMat1->NbCol;
-    int lig2 = pMat1->NbLig;
-    int col2 = pMat1->NbCol;
+    int col2 = pMat2->NbCol;
     for(int i = 0; i < lig1; ++i)
     for(int j = 0; j < col2; ++j){
         double elt = 0;
@@ -104,7 +111,7 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
 void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2){
     int lig1 = pMat1->NbLig;
     int col1 = pMat1->NbCol;
-    matAllouer(pMat2, lig1, col1);
+    matAllouer(&pMat2, lig1, col1);
     pMat2->Type = pleine;
     for(int i = 0; i < lig1; ++i)
     for(int j = 0; j < col1; ++j){
@@ -127,7 +134,7 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2){
     else{
         matCopy(pMat1, pMat2);
         T_Mat* temp;
-        matAllouer(temp, lig, col);
+        matAllouer(&temp, lig, col);
         for(int i = 1; i < Expo; ++i){
             opMul(pMat2, pMat1, temp);
             T_Mat* newTemp = pMat2;

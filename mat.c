@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "mat.h"
+#include "es.h"
 
 /*
  * fonction matAllouer
@@ -7,11 +8,12 @@
  *   pour qu'elle puisse contenir une matrice ayant
  *   Nblig lignes et NbCol colones
  */
-void matAllouer(T_Mat *pMat, int NbLig, int NbCol){
-  pMat->Type = malloc(sizeof(int));
-  pMat->NbCol = malloc(sizeof(int));
-  pMat->NbLig = malloc(sizeof(int));
-  pMat->Elts = malloc(sizeof(double)*NbLig*NbCol);
+void matAllouer(T_Mat **pMat, int NbLig, int NbCol){
+    *pMat = malloc(sizeof(T_Mat));
+    (*pMat)->Type = pleine;
+    (*pMat)->NbLig = NbLig;
+    (*pMat)->NbCol = NbCol;
+    (*pMat)->Elts = malloc(sizeof(double)*NbLig*NbCol);
 }
 
 /*
