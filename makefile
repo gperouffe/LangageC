@@ -5,7 +5,7 @@ matproj.o: matproj.c mat.h es.h op.h
 	gcc -c matproj.c
 
 mat.o: mat.c mat.h
-	gcc -c mat.c
+	gcc -c mat.c -lm
 
 op.o: op.c op.h err.h es.h mat.h
 	gcc -c op.c
