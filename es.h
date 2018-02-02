@@ -4,6 +4,13 @@
 #define triinf   4
 #define trisup   5
 
+#define addition 1
+#define soustraction 2
+#define multiplication 3
+#define puissance 4
+#define quitter 0
+
+
 
 /*
  * fonction esSaisir
@@ -19,3 +26,4 @@ void esSaisir(T_Mat *pMat);
  */
 void esAfficher(T_Mat *pMat);
 
+int menu();
