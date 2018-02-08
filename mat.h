@@ -1,3 +1,5 @@
+#ifndef MAT_H
+#define MAT_H
 
 typedef struct
   { int Type;
@@ -70,3 +72,5 @@ void matInit(T_Mat *pMat, double Val);
  *	reperee par pMat2 
  */
 void matCopy(T_Mat *pMat1, T_Mat *pMat2);
+
+#endif

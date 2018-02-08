@@ -1,3 +1,6 @@
+#ifndef ERR_H
+#define ERR_H
+
 /* message d'erreurs */
 #define NO_ERR 0
 #define DIFF_DIM 1
@@ -5,3 +8,5 @@
 #define NOT_SQUARE 3
 
 void errMsg(int num);
+
+#endif

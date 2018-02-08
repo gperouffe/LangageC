@@ -1,3 +1,6 @@
+#ifndef ES_H
+#define ES_H
+
 #define pleine   1
 #define diag     2
 #define tridiag  3
@@ -26,4 +29,20 @@ void esSaisir(T_Mat *pMat);
  */
 void esAfficher(T_Mat *pMat);
 
+/*
+ * fonction vecSaisir
+ * Description: Saisit  au clavier les elements d'un vecteur
+ * par l'utilisateur. Le vecteur en question est alloue et rempli
+ * avec les valeurs definies par l'utilisateur.
+ */
+void vecSaisir(T_Vec *pVec);
+
+/*
+ * fonction : vecAfficher
+ * Description : Affiche a l'ecran le contenu du vecteur représenté par pVec
+ */
+void vecAfficher(T_Vec *pVec);
+
 int menu();
+
+#endif

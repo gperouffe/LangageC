@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "mat.h"
-#include "es.h"
 
 /*
  * fonction matAllouer
@@ -9,7 +8,6 @@
  *   Nblig lignes et NbCol colones
  */
 void matAllouer(T_Mat *pMat, int NbLig, int NbCol){
-    pMat->Type = pleine;
     pMat->NbLig = NbLig;
     pMat->NbCol = NbCol;
     pMat->Elts = malloc(sizeof(double)*NbLig*NbCol);

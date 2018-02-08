@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include "vec.h"
 #include "mat.h"
-#include "op.h"
+#include "gauss.h"
 #include "es.h"
+#include "op.h"
 
 int main(){
 

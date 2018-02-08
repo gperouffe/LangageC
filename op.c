@@ -1,6 +1,7 @@
 #include "mat.h"
 #include "op.h"
 #include "err.h"
+#include "vec.h"
 #include "es.h"
 #include <math.h>
 #include <stdio.h>

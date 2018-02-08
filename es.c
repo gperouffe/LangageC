@@ -1,4 +1,5 @@
 #include "mat.h"
+#include "vec.h"
 #include "es.h"
 #include "err.h"
 #include <stdio.h>
@@ -90,6 +91,37 @@ void esSaisir(T_Mat *pMat){
 }
 
 /*
+ * fonction esSaisir
+ * Description: Saisit  au clavier les elements d'un vecteur
+ * par l'utilisateur. Le vecteur en question est alloue et rempli
+ * avec les valeurs definies par l'utilisateur.
+ */
+void vecSaisir(T_Vec *pVec){
+    int N;
+    
+    char validDim=0;
+    while(!validDim){
+        printf("Nombre de lignes: ");
+        scanf("%d", &N);
+        if(N <= 0){
+            printf("Les dimensions sont invalides. \n");
+        }
+        else{
+            validDim = 1;
+        }
+    }
+
+    vecAllouer(pVec, N);
+
+    double elt;
+    for(int j = 0; j < pVec->N; ++j){
+            printf("Vec[%d]=", j);
+            scanf("%lf", &elt);
+            vecModifElt(pVec, j, elt);
+    }
+}
+
+/*
  * fonction : esAfficher
  * Description : Affiche a l'ecran le contenu de la matrice reperee par pMAt
  */
@@ -99,6 +131,17 @@ void esAfficher(T_Mat *pMat){
             printf("%.3lf\t", matAccElt(pMat, i, j));
         }
         printf("\n");
+    }
+}
+
+
+/*
+ * fonction : esAfficher
+ * Description : Affiche a l'ecran le contenu du vecteur représenté par pVec
+ */
+void vecAfficher(T_Vec *pVec){
+    for(int i = 0; i < pVec->N; ++i){
+        printf("%.3lf\n", vecAccElt(pVec, i));
     }
 }
 

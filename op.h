@@ -1,3 +1,5 @@
+#ifndef OP_H
+#define OP_H
 /* operations sur les matrices */
 
 /*
@@ -73,3 +75,5 @@ double opNorme_2(T_Mat *pMat);
  * Description : callul de la norme INF 
  */
 double opNorme_inf(T_Mat *pMat);
+
+#endif
