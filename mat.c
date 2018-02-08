@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "mat.h"
+#include "vec.h"
+#include "es.h"
 
 /*
  * fonction matAllouer
