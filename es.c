@@ -197,7 +197,7 @@ int menu(){
   printf("\nChoisissez une operation\n");
   printf("\n\t1 - Addition\t\t\t2 - Soustraction");
   printf("\n\t3 - Multiplication\t\t4 - Puissance");
-  printf("\n\t5 - Triangulariser\t\t6 - Resoudre");
+  printf("\n\t5 - Triangulariser\t\t6 - Resoudre(Gauss)");
   printf("\n\t0 - Quitter");
 
   printf("\n\n----->");
@@ -208,6 +208,8 @@ int menu(){
     case soustraction:
     case multiplication:
     case puissance:
+    case triangulariser:
+    case resoudre:
     case quitter:
             return entry;
             break;

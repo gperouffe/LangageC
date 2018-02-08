@@ -10,7 +10,7 @@ int main(){
   printf("\n\n");
   printf("--------------------------------\n");
   printf("Operations Matricielles v1.01\n");
-  printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
+    printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
 
   T_Mat mat1, mat2, mat3;
   T_Vec vec1, vec2;
@@ -113,7 +113,7 @@ int main(){
           printf("\n--------------------------------\n");
           printf("Matrice :\n");
           esSaisir(&mat1);
-        } while(mat1.NbCol != mat2.NbLig);
+        } while(mat1.NbCol != mat1.NbLig);
 
         vecAllouer(&vec1, mat1.NbLig);
         vecInit(&vec1, 1);
@@ -131,7 +131,7 @@ int main(){
           printf("\n--------------------------------\n");
           printf("Matrice :\n");
           esSaisir(&mat1);
-        } while(mat1.NbCol != mat2.NbLig);
+        } while(mat1.NbCol != mat1.NbLig);
 
         do{
           printf("\n--------------------------------\n");
@@ -139,15 +139,16 @@ int main(){
           vecSaisir(&vec1);
         } while(vec1.N != mat1.NbLig);
 
-        vecAllouer(&vec2, &vec1.N);
+        vecAllouer(&vec2, vec1.N);
 
         remontee(&mat1, &vec1, &vec2);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
-        esAfficher(&vec2);
+        vecAfficher(&vec2);
         break;
 
       default:break;
     }
+    printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
   }
 }

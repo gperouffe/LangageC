@@ -43,7 +43,7 @@ void vecLiberer(T_Vec *pVec){
  * fonction : vecInit
  * Description : initialise un vecteur deja cree a une valeur Val donnee
  */
-void matInit(T_Vec* pVec, double Val){
+void vecInit(T_Vec* pVec, double Val){
     for(int i = 0; i < pVec->N; ++i){
         vecModifElt(pVec, i, Val);
     }
