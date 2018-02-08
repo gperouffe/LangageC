@@ -1,4 +1,4 @@
-matproj: vec.o es.o mat.o gauss.o op.o err.o matproj.o 
+matproj: vec.o es.o mat.o gauss.o op.o err.o matproj.o
 	gcc  matproj.o gauss.o mat.o vec.o op.o es.o err.o -o matproj -lm
 
 matproj.o: matproj.c vec.h mat.h es.h op.h
@@ -11,7 +11,7 @@ mat.o: mat.c mat.h es.h
 	gcc -c mat.c
 
 gauss.o: gauss.c gauss.h
-	gcc -c gauss.c
+	gcc -c gauss.c -lm
 
 op.o: op.c op.h err.h es.h mat.h vec.h
 	gcc -c op.c

@@ -13,7 +13,7 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
     int maxIndex = 0;
 
     for(int i = j; i<pMat->NbLig;i++)
-      if(abs(matAccElt(pMat,i,j))>max){
+      if(fabs(matAccElt(pMat,i,j))>max){
         max = matAccElt(pMat,i,j);
         maxIndex=j;
       }
@@ -30,14 +30,15 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
       if(maxIndex!=dernierPivot-1)
         permuter(pMat,pVec,maxIndex,dernierPivot-1);
 
-      for(int i = 0;i<pMat->NbLig){
+      for(int i = 0;i<pMat->NbLig;i++){
         if(i!=dernierPivot){
-          double elt = matAccElt(pMat,i,k);
+          double elt = matAccElt(pMat,i,j);
           if(elt){
             vecModifElt(pVec,i,(vecAccElt(pVec, i)-elt*vecAccElt(pVec,dernierPivot-1)));
 
             for(int k = 0;k<pMat->NbCol;k++)
               matModifElt(pMat,i,k,(matAccElt(pMat,i,k)-elt*matAccElt(pMat,dernierPivot-1,k)));
+
           }
         }
       }
