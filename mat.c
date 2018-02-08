@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "mat.h"
 
 /*
@@ -30,6 +31,93 @@ int matNbLig(T_Mat *pMat){
 int matNbCol(T_Mat *pMat){
   return pMat->NbCol;
 }
+
+/*
+*fonction matTypeAdd
+*Description : retourne le type résultant d'une addition ou soustraction
+*En fonction des types de matrice en entrée.
+*/
+int matTypeAdd(int Type1, int Type2){
+  switch(Type1){
+
+    case pleine:
+      return pleine;
+      break;
+
+    case diag:
+      return Type2;
+      break;
+
+    case tridiag:
+      if((Type2==diag)||(Type2==tridiag))
+        return tridiag;
+      else
+        return pleine;
+      break;
+
+    case triinf:
+      if((Type2==diag)||(Type2==triinf))
+        return triinf;
+      else
+        return pleine;
+      break;
+
+    case trisup:
+      if((Type2==diag)||(Type2==trisup))
+        return trisup;
+      else
+        return pleine;
+      break;
+
+    default:
+      return pleine;
+      break;
+  }
+}
+
+/*
+*fonction matTypeMul
+*Description : retourne le type résultant d'une multiplication
+*En fonction des types de matrice en entrée.
+*/
+int matTypeMul(int Type1, int Type2){
+  switch(Type1){
+
+    case pleine:
+      return pleine;
+      break;
+
+    case diag:
+      return Type2;
+      break;
+
+    case tridiag:
+      if(Type2==diag)
+        return tridiag;
+      else
+        return pleine;
+      break;
+
+    case triinf:
+      if((Type2==diag)||(Type2==triinf))
+        return triinf;
+      else
+        return pleine;
+      break;
+
+    case trisup:
+      if((Type2==diag)||(Type2==trisup))
+        return trisup;
+      else
+        return pleine;
+      break;
+
+    default:
+      return pleine;
+      break;
+  }
+}
+
 
 /*
  * fonction matAccElt
