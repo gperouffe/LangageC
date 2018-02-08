@@ -113,7 +113,7 @@ int main(){
           printf("\n--------------------------------\n");
           printf("Matrice :\n");
           esSaisir(&mat1);
-        } while(mat1.NbCol != mat1.NbLig);
+        } while(mat1.NbCol < mat1.NbLig);
 
         vecAllouer(&vec1, mat1.NbLig);
         vecInit(&vec1, 1);
@@ -139,9 +139,18 @@ int main(){
           vecSaisir(&vec1);
         } while(vec1.N != mat1.NbLig);
 
-        vecAllouer(&vec2, vec1.N);
+        vecAllouer(&vec2, mat1.NbCol);
 
         triangulation(&mat1, &vec1);
+        printf("\n--------------------------------\n");
+        printf("Matrice triangularisee :\n");
+
+        esAfficher(&mat1);
+
+        printf("\n--------------------------------\n");
+        printf("Vecteur obtenu :\n");
+        vecAfficher(&vec1);
+
         remontee(&mat1, &vec1, &vec2);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
