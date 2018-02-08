@@ -141,6 +141,7 @@ int main(){
 
         vecAllouer(&vec2, vec1.N);
 
+        triangulation(&mat1, &vec1);
         remontee(&mat1, &vec1, &vec2);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
