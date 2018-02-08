@@ -26,7 +26,7 @@ void esSaisir(T_Mat *pMat){
         }
     }
 
-    matAllouer(&pMat, lig, col);
+    matAllouer(pMat, lig, col);
 
     int type=0;
     char validType=0;
@@ -98,7 +98,7 @@ void esAfficher(T_Mat *pMat){
     printf("%d\n",pMat->NbLig);
     for(int i = 0; i < pMat->NbLig; ++i){
         for(int j = 0; j < pMat->NbCol; ++j){
-            printf("%lf", matAccElt(pMat, i, j));
+            printf("%.3lf\t", matAccElt(pMat, i, j));
         }
         printf("\n");
     }
