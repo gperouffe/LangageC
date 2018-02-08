@@ -21,8 +21,11 @@ void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
         pMat3=NULL;
     }
     else{
+
         matAllouer(pMat3, lig1, col1);
-        pMat3->Type = pleine;
+
+        pMat3->Type = matTypeAdd(pMat1->Type,pMat2->Type);
+
         for(int i = 0; i < lig1; ++i)
         for(int j = 0; j < col1; ++j){
             matModifElt(pMat3, i, j, matAccElt(pMat1,i,j) + matAccElt(pMat2,i,j));
@@ -47,7 +50,9 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     }
     else{
         matAllouer(pMat3, lig1, col1);
-        pMat3->Type = pleine;
+
+        pMat3->Type = matTypeAdd(pMat1->Type,pMat2->Type);
+
         for(int i = 0; i < lig1; ++i)
         for(int j = 0; j < col1; ++j){
             matModifElt(pMat3, i, j, matAccElt(pMat1,i,j) - matAccElt(pMat2,i,j));
@@ -72,7 +77,7 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     }
     else{
         matAllouer(pMat3, lig1, col2);
-        pMat3->Type = pleine;
+        pMat3->Type = matTypeMul(pMat1->Type,pMat2->Type);
         opMul(pMat1,pMat2,pMat3);
     }
 }
@@ -88,6 +93,7 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3){
     int lig2 = pMat2->NbLig;
     int col1 = pMat1->NbCol;
     int col2 = pMat2->NbCol;
+    pMat3->Type = matTypeMul(pMat1->Type,pMat2->Type);
     for(int i = 0; i < lig1; ++i)
     for(int j = 0; j < col2; ++j){
         double elt = 0;
@@ -107,7 +113,7 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2){
     int lig1 = pMat1->NbLig;
     int col1 = pMat1->NbCol;
     matAllouer(pMat2, lig1, col1);
-    pMat2->Type = pleine;
+    pMat2->Type = pMat1->Type;
     for(int i = 0; i < lig1; ++i)
     for(int j = 0; j < col1; ++j){
         matModifElt(pMat2, i, j, matAccElt(pMat1, i, j) * scal);
@@ -120,7 +126,7 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2){
  * Description : callul la puissance d'une  matrice
  */
 void opPuis(T_Mat *pMat1, int Expo, T_Mat *pMat2){
-    printf("%d\n", Expo);
+    printf("Exposant demande : %d\n", Expo);
     int lig = pMat1->NbLig;
     int col = pMat1->NbCol;
     if(lig != col){
@@ -129,11 +135,11 @@ void opPuis(T_Mat *pMat1, int Expo, T_Mat *pMat2){
     }
     else{
         matCopy(pMat1, pMat2);
+        pMat2->Type = matTypeMul(pMat1->Type,pMat1->Type);
         T_Mat* temp = malloc(sizeof(T_Mat));
         matAllouer(temp, lig, col);
         for(int i = 1; i < Expo; ++i){
             opMul(pMat2, pMat1, temp);
-
             double* result = temp->Elts;
             temp->Elts = pMat2->Elts;
             pMat2->Elts = result;

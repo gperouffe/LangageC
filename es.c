@@ -2,6 +2,7 @@
 #include "es.h"
 #include "err.h"
 #include <stdio.h>
+#include <string.h>
 
 /*
  * fonction esSaisir
@@ -95,7 +96,50 @@ void esSaisir(T_Mat *pMat){
  * Description : Affiche a l'ecran le contenu de la matrice reperee par pMAt
  */
 void esAfficher(T_Mat *pMat){
-    printf("%d\n",pMat->NbLig);
+
+    char typeMat[25];
+
+    switch(pMat->Type){
+      case pleine:
+      {
+        strcpy(typeMat,"pleine");
+        break;
+      }
+
+      case diag:
+      {
+        strcpy(typeMat,"diagonale");
+        break;
+      }
+
+      case tridiag:
+      {
+        strcpy(typeMat,"tridiagonale");
+        break;
+      }
+
+      case triinf:
+      {
+        strcpy(typeMat,"triangulaire inferieure");
+        break;
+      }
+
+      case trisup:
+      {
+        strcpy(typeMat,"triangulaire superieure");
+        break;
+      }
+
+      default:
+      {
+        strcpy(typeMat,"problematique");
+        break;
+      }
+    }
+
+
+    printf("Matrice de type %s.\n",typeMat);
+
     for(int i = 0; i < pMat->NbLig; ++i){
         for(int j = 0; j < pMat->NbCol; ++j){
             printf("%.3lf\t", matAccElt(pMat, i, j));
