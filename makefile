@@ -7,7 +7,7 @@ matproj.o: matproj.c vec.h mat.h es.h op.h
 vec.o: vec.c vec.h
 	gcc -c vec.c
 
-mat.o: mat.c mat.h
+mat.o: mat.c mat.h es.h
 	gcc -c mat.c
 
 gauss.o: gauss.c gauss.h

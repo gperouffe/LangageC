@@ -11,6 +11,8 @@
 #define soustraction 2
 #define multiplication 3
 #define puissance 4
+#define triangulariser 5
+#define resoudre 6
 #define quitter 0
 
 
