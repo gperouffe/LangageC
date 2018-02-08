@@ -2,6 +2,7 @@
 #include "vec.h"
 #include "gauss.h"
 #include <math.h>
+#include <stdio.h>
 
 void triangulation(T_Mat* pMat, T_Vec* pVec){
 
@@ -19,7 +20,6 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
       }
 
     if(max!=0){
-      dernierPivot++;
 
       //On divise la ligne par le max => pivot = 1 et le reste est <1
       for(int i = 0;i<pMat->NbCol;i++){
@@ -27,21 +27,22 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
         vecModifElt(pVec,maxIndex,(vecAccElt(pVec,maxIndex)/max));
       }
 
-      if(maxIndex!=dernierPivot-1)
-        permuter(pMat,pVec,maxIndex,dernierPivot-1);
+      if(maxIndex!=dernierPivot)
+        permuter(pMat,pVec,maxIndex,dernierPivot);
 
       for(int i = 0;i<pMat->NbLig;i++){
         if(i!=dernierPivot){
           double elt = matAccElt(pMat,i,j);
           if(elt){
-            vecModifElt(pVec,i,(vecAccElt(pVec, i)-elt*vecAccElt(pVec,dernierPivot-1)));
+            vecModifElt(pVec,i,(vecAccElt(pVec, i)-elt*vecAccElt(pVec,dernierPivot)));
 
             for(int k = 0;k<pMat->NbCol;k++)
-              matModifElt(pMat,i,k,(matAccElt(pMat,i,k)-elt*matAccElt(pMat,dernierPivot-1,k)));
+              matModifElt(pMat,i,k,(matAccElt(pMat,i,k)-elt*matAccElt(pMat,dernierPivot,k)));
 
           }
         }
       }
+      dernierPivot++;
     }
   }
 }
