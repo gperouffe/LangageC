@@ -191,7 +191,7 @@ int main(){
       default:
           while ((c = getchar()) != '\n' && c != EOF) { }
     }
-    printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
+    printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
   }
   matLiberer(&mat1);
   matLiberer(&mat2);
