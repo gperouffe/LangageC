@@ -212,10 +212,12 @@ int menu(){
     case resoudre:
     case decompLU:
     case quitter:
-            return entry;
-            break;
-    default:printf("Entree non reconnues, veuillez recommencer");
-            return -1;
-            break;
+        return entry;
+        break;
+    default:
+        printf("Entree non reconnues, veuillez recommencer");
+        fseek(stdin,0,SEEK_END);
+        return -1;
+        break;
   }
 }

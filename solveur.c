@@ -102,9 +102,6 @@ void permutation(T_Mat* pMat, T_Mat* pPermut){
         matEchangeLig(pPermut,max_j,i);
       }
     }
-
-
-
 }
 
 void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
