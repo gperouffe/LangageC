@@ -98,7 +98,7 @@ void permutation(T_Mat* pMat, T_Mat* pPermut){
           max_j=j;
       }
 
-      if(max_j!!=i){
+      if(max_j!=i){
         matEchangeLig(pPermut,max_j,i);
       }
     }
