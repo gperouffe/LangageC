@@ -129,6 +129,9 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
         esAfficher(&mat1);
+
+        matLiberer(&mat1);
+        vecLiberer(&vec1);
         break;
 
 
@@ -155,6 +158,10 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
         vecAfficher(&vec2);
+
+        matLiberer(&mat1);
+        vecLiberer(&vec1);
+        vecLiberer(&vec2);
         break;
 
       case decompLU:
@@ -183,6 +190,11 @@ int main(){
         printf("\n--------------------------------\n");
         printf("U :\n");
         esAfficher(&mat4);
+        
+        matLiberer(&mat1);
+        matLiberer(&mat2);
+        matLiberer(&mat3);
+        matLiberer(&mat4);
         break;
 
       case quitter:
@@ -193,10 +205,5 @@ int main(){
     }
     printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-\n");
   }
-  matLiberer(&mat1);
-  matLiberer(&mat2);
-  matLiberer(&mat3);
-  matLiberer(&mat4);
-  vecLiberer(&vec1);
-  vecLiberer(&vec2);
 }
+
