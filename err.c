@@ -10,7 +10,4 @@ void errMsg(int num)
                  "erreur 3: La matrice n'est pas carre"};
 
   printf("%d : %s\n", num, Msg[num]);
-  if(num){
-    exit(0);
-  }
 }

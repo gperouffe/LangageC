@@ -26,6 +26,7 @@
  */
 void esSaisir(T_Mat *pMat);
 
+void esSaisirDim(T_Mat *pMat);
 /*
  * fonction : esAfficher
  * Description : Affiche a l'ecran le contenu de la matrice reperee par pMAt

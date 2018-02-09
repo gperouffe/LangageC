@@ -14,21 +14,23 @@ int main(){
 
   T_Mat mat1, mat2, mat3, mat4;
   T_Vec vec1, vec2;
-  int x = 0, exposant;
+  int exposant;
 
-  while(x=menu()){
+  char quit = 0,c;
+  while(!quit){
 
 
-
-    switch(x){
+    switch(menu()){
       case addition:
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
-
+        esSaisirDim(&mat1);
         esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
+
+        matAllouer(&mat2, mat1.NbLig, mat1.NbCol);
         esSaisir(&mat2);
 
         opAddAlloc(&mat1, &mat2, &mat3);
@@ -46,11 +48,12 @@ int main(){
 
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
-
+        esSaisirDim(&mat1);
         esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
+        matAllouer(&mat2, mat1.NbLig, mat1.NbCol);
         esSaisir(&mat2);
 
         opSubAlloc(&mat1, &mat2, &mat3);
@@ -73,6 +76,9 @@ int main(){
 
         printf("\n--------------------------------\n");
         printf("Seconde Matrice :\n");
+        do{
+          esSaisirDim(&mat2);
+        } while(mat1.NbCol!=mat2.NbLig);
         esSaisir(&mat2);
 
         opMulAlloc(&mat1, &mat2, &mat3);
@@ -90,12 +96,12 @@ int main(){
 
         printf("\n--------------------------------\n");
         printf("Premiere Matrice :\n");
-
+        esSaisirDim(&mat1);
         esSaisir(&mat1);
 
         printf("\n--------------------------------\n");
         printf("Exposant voulu: ");
-        scanf("%d", &exposant);
+        scanf(" %d", &exposant);
 
         opPuis(&mat1, exposant, &mat2);
         printf("\n--------------------------------\n");
@@ -112,6 +118,7 @@ int main(){
         do{
           printf("\n--------------------------------\n");
           printf("Matrice :\n");
+          esSaisirDim(&mat1);
           esSaisir(&mat1);
         } while(mat1.NbCol < mat1.NbLig);
 
@@ -130,8 +137,10 @@ int main(){
         do{
           printf("\n--------------------------------\n");
           printf("Matrice :\n");
-          esSaisir(&mat1);
+          esSaisirDim(&mat1);
         } while(mat1.NbCol != mat1.NbLig);
+
+        esSaisir(&mat1);
 
         do{
           printf("\n--------------------------------\n");
@@ -153,9 +162,10 @@ int main(){
         do{
           printf("\n--------------------------------\n");
           printf("Matrice A :\n");
-          esSaisir(&mat1);
+          esSaisirDim(&mat1);
         } while(mat1.NbCol != mat1.NbLig);
 
+        esSaisir(&mat1);
         decompositionLU(&mat1, &mat2, &mat3, &mat4);
         printf("\n--------------------------------\n");
         printf("P :\n");
@@ -175,7 +185,11 @@ int main(){
         esAfficher(&mat4);
         break;
 
-      default:break;
+      case quitter:
+        quit = 1;
+        break;
+      default:
+          while ((c = getchar()) != '\n' && c != EOF) { }
     }
     printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
   }

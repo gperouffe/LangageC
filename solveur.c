@@ -93,7 +93,7 @@ void permutation(T_Mat* pMat, T_Mat* pPermut){
     matUnite(pPermut,pMat->NbLig);
     for(int i = 0;i<pMat->NbCol;i++){
 
-      int max_j=0;
+      int max_j=i;
       for(int j = i; j<pMat->NbLig;j++){
         if(fabs(matAccElt(pMat,j,i))>fabs(matAccElt(pMat,max_j,i)))
           max_j=j;

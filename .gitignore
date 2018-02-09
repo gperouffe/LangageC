@@ -3,3 +3,4 @@ matproj
 matproj.exe
 .vscode
 *.o
+.nfs*

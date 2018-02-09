@@ -11,30 +11,39 @@
  * par l'utilisateur. La matrice en question est allouee et remplie
  * avec les valeurs definies par l'utilisateur.
  */
+
+void esSaisirDim(T_Mat *pMat){
+  int lig, col;
+  char c;
+  char validDim=0;
+  while(!validDim){
+      printf("Nombre de lignes: ");
+      scanf(" %d", &lig);
+      printf("Nombre de colonnes: ");
+      scanf(" %d", &col);
+      while ((c = getchar()) != '\n' && c != EOF) { }
+      if(lig <= 0 || col <= 0){
+          printf("\nLes dimensions sont invalides. \n");
+      }
+      else{
+          validDim = 1;
+      }
+  }
+
+  matAllouer(pMat, lig, col);
+}
+
 void esSaisir(T_Mat *pMat){
-    int lig, col;
-
-    char validDim=0;
-    while(!validDim){
-        printf("Nombre de lignes: ");
-        scanf("%d", &lig);
-        printf("Nombre de colonnes: ");
-        scanf("%d", &col);
-        if(lig <= 0 && col <= 0){
-            printf("Les dimensions sont invalides. \n");
-        }
-        else{
-            validDim = 1;
-        }
-    }
-
-    matAllouer(pMat, lig, col);
+    int lig = pMat->NbLig;
+    int col = pMat->NbCol;
 
     int type=0;
-    char validType=0;
+    char validType=0,c;
     while(!validType){
         printf("Type de la matrice (pleine = 1, diag = 2, tridiag = 3, triinf = 4, trisup = 5): ");
-        scanf("%d", &type);
+        scanf(" %d", &type);
+        while ((c = getchar()) != '\n' && c != EOF) { }
+
         if(type == 1){
             validType = 1;
         }
@@ -52,8 +61,8 @@ void esSaisir(T_Mat *pMat){
 
 
     double elt;
-    for(int i = 0; i < pMat->NbLig; ++i)
-    for(int j = 0; j < pMat->NbCol; ++j){
+    for(int i = 0; i < lig; ++i)
+    for(int j = 0; j < col; ++j){
         char askForElt = 0;
         switch(pMat->Type){
             case pleine:
@@ -82,7 +91,7 @@ void esSaisir(T_Mat *pMat){
         }
         if(askForElt){
             printf("Mat[%d][%d]=", i, j);
-            scanf("%lf", &elt);
+            scanf(" %lf", &elt);
             matModifElt(pMat, i, j, elt);
         }
         else{
@@ -192,32 +201,16 @@ void vecAfficher(T_Vec *pVec){
 
 int menu(){
 
-  int entry;
+  int entry=-1;
   printf("\nChoisissez une operation\n");
   printf("\n\t1 - Addition\t\t\t2 - Soustraction");
   printf("\n\t3 - Multiplication\t\t4 - Puissance");
   printf("\n\t5 - Triangulariser\t\t6 - Resoudre(Gauss)");
-  printf("\n\t7 - Decomposition LU");
+  printf("\n\t7 - Decomposition PA=LU");
   printf("\n\t0 - Quitter");
 
   printf("\n\n----->");
-  scanf("%d",&entry);
 
-  switch(entry){
-    case addition:
-    case soustraction:
-    case multiplication:
-    case puissance:
-    case triangulariser:
-    case resoudre:
-    case decompLU:
-    case quitter:
-        return entry;
-        break;
-    default:
-        printf("Entree non reconnues, veuillez recommencer");
-        fseek(stdin,0,SEEK_END);
-        return -1;
-        break;
-  }
+  scanf(" %1d",&entry);
+  return entry;
 }
