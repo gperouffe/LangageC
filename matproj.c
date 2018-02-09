@@ -9,7 +9,7 @@ int main(){
 
   printf("\n\n");
   printf("--------------------------------\n");
-  printf("Operations Matricielles v1.01\n");
+  printf("Operations Matricielles v1.1\n");
     printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
 
   T_Mat mat1, mat2, mat3, mat4;
