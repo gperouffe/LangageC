@@ -124,14 +124,19 @@ void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
 
   for(int i = 0; i < N; ++i)
   for(int j = 0; j < N; ++j){
-    double sum = 0;
-    for(int k = j; k < N; ++k){
-      sum += matAccElt(pL, j, k) * matAccElt(pU, k, i);
-    }
+    double sum;
     if(j <= i){
+      sum = 0;
+      for(int k = 0; k < j; ++k){
+        sum += matAccElt(pL, j, k) * matAccElt(pU, k, i);
+      }
       matModifElt(pU, j, i, matAccElt(&Aprime, j, i) - sum);
     }
     if(j >= i){
+      sum = 0;
+      for(int k = 0; k < i; ++k){
+        sum += matAccElt(pL, j, k) * matAccElt(pU, k, i);
+      }
       matModifElt(pL, j, i, (matAccElt(&Aprime, j, i) - sum)/ matAccElt(pU, i, i));
     }
   }
