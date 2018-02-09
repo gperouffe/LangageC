@@ -142,5 +142,5 @@ void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
     }
   }
 
-
+  matLiberer(&Aprime);
 }

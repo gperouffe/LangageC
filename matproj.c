@@ -193,4 +193,10 @@ int main(){
     }
     printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
   }
+  matLiberer(&mat1);
+  matLiberer(&mat2);
+  matLiberer(&mat3);
+  matLiberer(&mat4);
+  vecLiberer(&vec1);
+  vecLiberer(&vec2);
 }
