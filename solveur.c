@@ -1,6 +1,6 @@
 #include "mat.h"
 #include "vec.h"
-#include "gauss.h"
+#include "solveur.h"
 #include <math.h>
 #include <stdio.h>
 

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "vec.h"
 #include "mat.h"
-#include "gauss.h"
+#include "solveur.h"
 #include "es.h"
 #include "op.h"
 
