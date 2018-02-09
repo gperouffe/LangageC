@@ -2,6 +2,7 @@
 #include "op.h"
 #include "vec.h"
 #include "solveur.h"
+#include "es.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -109,9 +110,12 @@ void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
   int N = pMat->NbLig;
 
   matAllouer(pPermut, N, N);
+  pU->Type = pleine;
   matUnite(pL, N);
+  pU->Type = triinf;
   matAllouer(pU, N, N);
   matInit(pU, 0);
+  pU->Type = trisup;
 
   permutation(pMat, pPermut);
 
