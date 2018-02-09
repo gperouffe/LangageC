@@ -89,7 +89,6 @@ void esSaisir(T_Mat *pMat){
             matModifElt(pMat, i, j, 0);
         }
     }
-    printf("%d\n",pMat->NbLig);
 }
 
 /*
@@ -100,7 +99,7 @@ void esSaisir(T_Mat *pMat){
  */
 void vecSaisir(T_Vec *pVec){
     int N;
-    
+
     char validDim=0;
     while(!validDim){
         printf("Nombre de lignes: ");
