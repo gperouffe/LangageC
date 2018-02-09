@@ -28,7 +28,7 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
       vecModifElt(pVec,maxIndex,(vecAccElt(pVec,maxIndex)/max));
 
       if(maxIndex!=dernierPivot){
-        permuter(pMat,pVec,maxIndex,dernierPivot);
+        echangeLig(pMat,pVec,maxIndex,dernierPivot);
       }
 
       for(int i = 0;i<pMat->NbLig;i++){
@@ -60,7 +60,7 @@ void remontee(T_Mat* pMat, T_Vec* pVec, T_Vec* pSolu){
     }
 }
 
-void permuter(T_Mat* pMat, T_Vec* pVec, int p, int j){
+void echangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j){
 
   double temp=0;
   for(int c = 0;c<pMat->NbCol;++c){
