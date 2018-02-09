@@ -159,8 +159,7 @@ void matLiberer(T_Mat *pMat){
  */
 void matUnite(T_Mat *pMat, int Dim){
   pMat->Type = 2;
-  pMat->NbLig = Dim;
-  pMat->NbCol = Dim;
+  matAllouer(pMat,Dim,Dim);
   matInit(pMat, 0);
   for(int i = 0; i<Dim;i++){
     int x = i*(pMat->NbCol)+i;
