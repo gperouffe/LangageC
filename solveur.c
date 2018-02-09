@@ -110,9 +110,9 @@ void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
   int N = pMat->NbLig;
 
   matAllouer(pPermut, N, N);
-  pU->Type = pleine;
+  pPermut->Type = pleine;
   matUnite(pL, N);
-  pU->Type = triinf;
+  pL->Type = triinf;
   matAllouer(pU, N, N);
   matInit(pU, 0);
   pU->Type = trisup;
