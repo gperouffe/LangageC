@@ -12,7 +12,7 @@ int main(){
   printf("Operations Matricielles v1.01\n");
     printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-");
 
-  T_Mat mat1, mat2, mat3;
+  T_Mat mat1, mat2, mat3, mat4;
   T_Vec vec1, vec2;
   int x = 0, exposant;
 
@@ -146,6 +146,33 @@ int main(){
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
         vecAfficher(&vec2);
+        break;
+
+      case decompLU:
+
+        do{
+          printf("\n--------------------------------\n");
+          printf("Matrice A :\n");
+          esSaisir(&mat1);
+        } while(mat1.NbCol != mat1.NbLig);
+
+        decompositionLU(&mat1, &mat2, &mat3, &mat4);
+        printf("\n--------------------------------\n");
+        printf("P :\n");
+        esAfficher(&mat2);
+
+        decompositionLU(&mat1, &mat2, &mat3, &mat4);
+        printf("\n--------------------------------\n");
+        printf("A :\n");
+        esAfficher(&mat1);
+
+        printf("\n--------------------------------\n");
+        printf("L :\n");
+        esAfficher(&mat3);
+
+        printf("\n--------------------------------\n");
+        printf("U :\n");
+        esAfficher(&mat4);
         break;
 
       default:break;

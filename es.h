@@ -13,6 +13,7 @@
 #define puissance 4
 #define triangulariser 5
 #define resoudre 6
+#define decompLU 7
 #define quitter 0
 
 
