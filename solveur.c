@@ -1,4 +1,5 @@
 #include "mat.h"
+#include "op.h"
 #include "vec.h"
 #include "solveur.h"
 #include <math.h>
@@ -78,8 +79,37 @@ void echangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j){
 
 void permutation(T_Mat* pMat, T_Mat* pPermut){
 
+  
 }
 
 void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){
-  
+
+  int N = pMat->NbLig;
+
+  matAllouer(pPermut, N, N);
+  matUnite(pL, N);
+  matAllouer(pU, N, N);
+  matInit(pU, 0);
+
+  permutation(pMat, pPermut);
+
+  T_Mat Aprime;
+
+  opMulAlloc(pPermut, pMat, &Aprime);
+
+  for(int i = 0; i < N; ++i)
+  for(int j = 0; j < N; ++j){
+    double sum = 0;
+    for(int k = j; k < N; ++k){
+      sum += matAccElt(pL, j, k) * matAccElt(pU, k, i);
+    }
+    if(j <= i){
+      matModifElt(pU, j, i, matAccElt(&Aprime, j, i) - sum);
+    }
+    if(j >= i){
+      matModifElt(pL, j, i, (matAccElt(&Aprime, j, i) - sum)/ matAccElt(pU, i, i));
+    }
+  }
+
+
 }
