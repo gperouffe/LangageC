@@ -142,15 +142,6 @@ int main(){
         vecAllouer(&vec2, mat1.NbCol);
 
         triangulation(&mat1, &vec1);
-        printf("\n--------------------------------\n");
-        printf("Matrice triangularisee :\n");
-
-        esAfficher(&mat1);
-
-        printf("\n--------------------------------\n");
-        printf("Vecteur obtenu :\n");
-        vecAfficher(&vec1);
-
         remontee(&mat1, &vec1, &vec2);
         printf("\n--------------------------------\n");
         printf("Resultat :\n");
