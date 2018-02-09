@@ -29,7 +29,7 @@ void triangulation(T_Mat* pMat, T_Vec* pVec){
       vecModifElt(pVec,maxIndex,(vecAccElt(pVec,maxIndex)/max));
 
       if(maxIndex!=dernierPivot){
-        echangeLig(pMat,pVec,maxIndex,dernierPivot);
+        sysEchangeLig(pMat,pVec,maxIndex,dernierPivot);
       }
 
       for(int i = 0;i<pMat->NbLig;i++){
@@ -61,7 +61,7 @@ void remontee(T_Mat* pMat, T_Vec* pVec, T_Vec* pSolu){
     }
 }
 
-void echangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j){
+void sysEchangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j){
 
   double temp=0;
   for(int c = 0;c<pMat->NbCol;++c){
@@ -74,12 +74,37 @@ void echangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j){
     vecModifElt(pVec,p,vecAccElt(pVec,j));
     vecModifElt(pVec,j,temp);
     }
+}
 
+void matEchangeLig(T_Mat* pMat, int p, int j){
+
+  double temp=0;
+  for(int c = 0;c<pMat->NbCol;++c){
+
+    temp=matAccElt(pMat,p,c);
+    matModifElt(pMat,p,c,matAccElt(pMat,j,c));
+    matModifElt(pMat,j,c,temp);
+    }
 }
 
 void permutation(T_Mat* pMat, T_Mat* pPermut){
 
-  
+    matUnite(pPermut,pMat->NbLig);
+    for(int i = 0;i<pMat->NbCol;i++){
+
+      int max_j=0;
+      for(int j = i; j<pMat->NbLig;j++){
+        if(fabs(matAccElt(pMat,j,i))>fabs(matAccElt(pMat,max_j,i)))
+          max_j=j;
+      }
+
+      if(max_j!!=i){
+        matEchangeLig(pPermut,max_j,i);
+      }
+    }
+
+
+
 }
 
 void decompositionLU(T_Mat* pMat, T_Mat* pPermut, T_Mat* pL, T_Mat* pU){

@@ -5,7 +5,9 @@ void triangulation(T_Mat* pMat, T_Vec* pVec);
 
 void remontee(T_Mat* pMat, T_Vec* pVec, T_Vec* pSolu);
 
-void echangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j);
+void sysEchangeLig(T_Mat* pMat, T_Vec* pVec, int p, int j);
+
+void matEchangeLig(T_Mat* pMat, int p, int j)
 
 void permutation(T_Mat* pMat, T_Mat* pPermut);
 
